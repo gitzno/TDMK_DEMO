@@ -40,8 +40,8 @@ services:
     ports:
       - "7288:3000"
     environment:
-      - NUXT_PUBLIC_API_BASE=http://${VPS_IP}:7287
-      - NUXT_PUBLIC_HUB_URL=http://${VPS_IP}:7287/hubs/monitor
+      - NUXT_PUBLIC_API_BASE=http://${BACKEND_DOMAIN}
+      - NUXT_PUBLIC_HUB_URL=http://${BACKEND_DOMAIN}/hubs/monitor
     restart: always
     networks:
       - tdmk-network
