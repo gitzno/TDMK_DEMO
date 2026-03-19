@@ -1,0 +1,28 @@
+## Thư mục build và file tạm của .NET
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+
+## Visual Studio
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.doccache
+
+## Cấu hình cá nhân và Bí mật (QUAN TRỌNG)
+.env
+appsettings.Development.json
+usersecrets.json
+
+## Docker
+.dockerignore
+Dockerfile.user
+
+## Thư mục lưu trữ dữ liệu (Nếu Thụy map folder này)
+wwwroot/uploads/
+node_modules/
+
+## Các file hệ thống
+Thumbs.db
+.DS_Store

@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\servi\\OneDrive\\Desktop\\thuyht\\TDMK_DEMO\\backend_api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|c:\\users\\servi\\onedrive\\desktop\\thuyht\\tdmk_demo\\backend_api\\tdmk_api_demo\\dockerfile||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|solutionrelative:tdmk_api_demo\\dockerfile||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|c:\\users\\servi\\onedrive\\desktop\\thuyht\\tdmk_demo\\backend_api\\tdmk_api_demo\\tdmk_api_demo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|solutionrelative:tdmk_api_demo\\tdmk_api_demo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\servi\\OneDrive\\Desktop\\thuyht\\TDMK_DEMO\\backend_api\\TDMK_API_DEMO\\Dockerfile",
+              "RelativeDocumentMoniker": "TDMK_API_DEMO\\Dockerfile",
+              "ToolTip": "C:\\Users\\servi\\OneDrive\\Desktop\\thuyht\\TDMK_DEMO\\backend_api\\TDMK_API_DEMO\\Dockerfile",
+              "RelativeToolTip": "TDMK_API_DEMO\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-19T02:23:25.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TDMK_API_DEMO",
+              "DocumentMoniker": "C:\\Users\\servi\\OneDrive\\Desktop\\thuyht\\TDMK_DEMO\\backend_api\\TDMK_API_DEMO\\TDMK_API_DEMO.csproj",
+              "RelativeDocumentMoniker": "TDMK_API_DEMO\\TDMK_API_DEMO.csproj",
+              "ToolTip": "C:\\Users\\servi\\OneDrive\\Desktop\\thuyht\\TDMK_DEMO\\backend_api\\TDMK_API_DEMO\\TDMK_API_DEMO.csproj",
+              "RelativeToolTip": "TDMK_API_DEMO\\TDMK_API_DEMO.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-19T02:18:06.343Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -89,13 +89,14 @@ app.UseRouting();
 app.UseCors("AllowAll");
 app.UseAuthorization();
 
+var uploadFolder = app.Configuration.GetValue<string>("FileStorage:UploadFolder")
+                   ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(@"C:\Users\TDMK\Desktop\Image"),
+    FileProvider = new PhysicalFileProvider(uploadFolder),
     RequestPath = "/external-images"
 });
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

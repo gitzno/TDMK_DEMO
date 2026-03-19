@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TDMK_API_DEMO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ca16bb61fbf444dc8f3b56eb39e61b93cf93762")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b7b62d352ac9b4ff420b71dc73e6e1e57d2295d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TDMK_API_DEMO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TDMK_API_DEMO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
