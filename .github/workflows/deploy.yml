@@ -31,6 +31,10 @@ jobs:
           context: ./frontend-ui
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tdmk-frontend:latest
+          build-args: |
+            # Dùng IP VPS và cổng 7287 của Backend đã config ở trên
+            NUXT_PUBLIC_API_BASE=http://${{ secrets.VPS_IP }}:7287
+            NUXT_PUBLIC_HUB_URL=http://${{ secrets.VPS_IP }}:7287/hubs/monitor
 
   deploy-to-vps:
     needs: build-and-push

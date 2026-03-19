@@ -35,12 +35,11 @@ services:
   frontend:
     image: ${DOCKERHUB_USERNAME}/tdmk-frontend:latest
     container_name: tdmk-frontend-app
-    depends_on:
-      - backend
     ports:
-      - "7288:3000" # Đổi sang 7288 để tránh trùng với app cũ cổng 3000 của Thụy
+      # CỔNG QUAN TRỌNG: Đổi 3000 thành 7288 để tránh trùng với website cũ
+      - "7288:3000" 
     environment:
-      # Biến này cực kỳ quan trọng để trình duyệt gọi đúng IP VPS
+      # Browser sẽ gọi API qua IP VPS và cổng 7287 của Backend
       - NUXT_PUBLIC_API_BASE=http://${VPS_IP}:7287
       - NUXT_PUBLIC_HUB_URL=http://${VPS_IP}:7287/hubs/monitor
     restart: always
