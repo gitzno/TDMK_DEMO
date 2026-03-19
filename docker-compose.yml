@@ -1,10 +1,51 @@
 services:
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: tdmk-sql-db
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD} # Lấy từ file .env
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
     ports:
       - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    restart: always
 
-  
+  backend:
+    build:
+      context: ./backend_api
+      dockerfile: Dockerfile
+    container_name: tdmk-running-app
+    depends_on:
+      - db
+    ports:
+      - "7287:8081"
+    environment:
+      - ASPNETCORE_HTTP_PORTS=8081
+      - ASPNETCORE_URLS=http://+:8081 # <--- THÊM DÒNG NÀY ĐỂ ÉP CHẠY HTTP
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=TDMK_DB_DEMO;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True
+      - FileStorage__UploadFolder=/app/wwwroot/uploads
+    volumes:
+      - tdmk_uploads:/app/wwwroot/uploads
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend-ui
+      dockerfile: Dockerfile
+    container_name: tdmk-frontend-app
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      # URL để trình duyệt của Thụy gọi tới API
+      - NUXT_PUBLIC_API_BASE=http://localhost:7287
+      # URL cho Socket/SignalR
+      - NUXT_PUBLIC_HUB_URL=http://localhost:7287/hubs/monitor
+    restart: always
+
+volumes:
+  mssql_data:
+  tdmk_uploads:
