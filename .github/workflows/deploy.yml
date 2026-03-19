@@ -42,10 +42,10 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_IP }}
-          username: ${{ secrets.VPS_USER }}
+          username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            # 1. Di chuyển vào thư mục project trên VPS (Thụy kiểm tra lại đường dẫn này)
+            # 1. Di chuyển vào thư mục project trên VPS
             cd ~/td-mk-project || mkdir -p ~/td-mk-project && cd ~/td-mk-project
 
             # 2. Đăng nhập Docker Hub để có quyền kéo image
