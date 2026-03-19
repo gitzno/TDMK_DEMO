@@ -78,7 +78,7 @@ jobs:
 
             # 4. LÀM SẠCH CONTAINER CŨ (Cực kỳ quan trọng để xóa cache env cũ)
             docker compose down --remove-orphans
-
+            docker system prune -f
             # 5. Kéo bản Image mới nhất từ Docker Hub
             docker compose pull
 
