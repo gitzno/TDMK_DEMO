@@ -2,7 +2,7 @@ name: Build and Deploy TD-MK System (Fullstack)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "deploy" ]
   workflow_dispatch:
 
 jobs:
