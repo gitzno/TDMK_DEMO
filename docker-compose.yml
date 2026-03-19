@@ -40,7 +40,7 @@ services:
     ports:
       - "7288:3000"
     environment:
-      - NUXT_PUBLIC_API_BASE=https://api.tdmk.vn/
+      - NUXT_PUBLIC_API_BASE=https://api.tdmk.vn
       - NUXT_PUBLIC_HUB_URL=https://api.tdmk.vn/hubs/monitor
     restart: always
     networks:
