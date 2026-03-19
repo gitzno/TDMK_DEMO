@@ -69,7 +69,7 @@ jobs:
             
             # 3. THIẾT LẬP BIẾN MÔI TRƯỜNG CHO PHIÊN LÀM VIỆC NÀY
             # Sửa lại thành Domain thật của Thụy. Nếu đã có Nginx Proxy cổng 80 thì bỏ :7287
-            export BACKEND_DOMAIN="apis.tdmk.vn:7287"
+            export BACKEND_DOMAIN="apis.tdmk.vn"
             
             # Đồng bộ các biến khác cho Backend và DB
             export MSSQL_SA_PASSWORD='${{ secrets.MSSQL_SA_PASSWORD }}'
