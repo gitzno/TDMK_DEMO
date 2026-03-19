@@ -2,62 +2,77 @@ name: Build and Deploy TD-MK System
 
 on:
   push:
-    branches: [ "deploy" ]
-  workflow_dispatch:
+    branches: [ "deploy" ] # Chạy khi push vào nhánh deploy
+  workflow_dispatch:      # Cho phép chạy thủ công từ tab Actions
 
 jobs:
   build-and-push:
+    name: Build Docker Images and Push to Hub
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Build Backend từ thư mục backend_api
+      # Build & Push Backend
       - name: Build and push Backend
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: ./backend_api
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tdmk-backend:latest 
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tdmk-backend:latest
 
-      # Build Frontend từ thư mục frontend-ui
+      # Build & Push Frontend
       - name: Build and push Frontend
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: ./frontend-ui
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tdmk-frontend:latest 
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tdmk-frontend:latest
 
-  deploy:
-    runs-on: ubuntu-latest
+  deploy-to-vps:
+    name: Deploy to VPS
     needs: build-and-push
+    runs-on: ubuntu-latest
     steps:
-      - name: Deploy to VPS via SSH
-        uses: appleboy/ssh-action@master
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # TỰ ĐỘNG COPY FILE DOCKER-COMPOSE SANG VPS
+      - name: Copy docker-compose.yml to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "docker-compose.yml"
+          target: "/home/thuy/tdmk-app/"
+          overwrite: true
+
+      # THỰC THI LỆNH TRÊN VPS
+      - name: Executing remote ssh commands
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            # 1. Di chuyển vào thư mục project trên VPS
-            cd ~/td-mk-project || mkdir -p ~/td-mk-project && cd ~/td-mk-project
+            # 1. Di chuyển vào thư mục dự án
+            cd /home/thuy/tdmk-app || exit
 
-            # 2. Đăng nhập Docker Hub để có quyền kéo image
+            # 2. Đăng nhập Docker trên VPS
             echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-            # 3. Pull các bản build mới nhất về
-            docker pull ${{ secrets.DOCKHUB_USERNAME }}/tdmk-backend:latest
-            docker pull ${{ secrets.DOCKHUB_USERNAME }}/tdmk-frontend:latest
+            # 3. Kéo Image mới nhất về
+            docker compose pull
 
-            # 4. Sử dụng Docker Compose để khởi động lại toàn bộ hệ thống
-            # Lệnh này sẽ tự động dừng container cũ và chạy bản mới
+            # 4. Khởi động lại các dịch vụ (Backend & Frontend)
             docker compose up -d
 
-            # 5. Dọn dẹp image cũ không dùng đến
+            # 5. Dọn dẹp các Image cũ để tránh đầy ổ cứng VPS
             docker image prune -f
