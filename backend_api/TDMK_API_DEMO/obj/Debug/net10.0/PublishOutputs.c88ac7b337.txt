@@ -1,9 +1,0 @@
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\TDMK_API_DEMO.exe
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\appsettings.Development.json
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\appsettings.json
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\TDMK_API_DEMO.dll
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\TDMK_API_DEMO.deps.json
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\TDMK_API_DEMO.runtimeconfig.json
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\TDMK_API_DEMO.pdb
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\Microsoft.AspNetCore.OpenApi.dll
-C:\Users\TDMK\Desktop\New folder (2)\backend_api\TDMK_API_DEMO\obj\Debug\net10.0\PubTmp\Out\Microsoft.OpenApi.dll
