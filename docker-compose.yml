@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -35,14 +37,11 @@ services:
   frontend:
     image: ${DOCKERHUB_USERNAME}/tdmk-frontend:latest
     container_name: tdmk-frontend-app
-    depends_on:
-      - backend
     ports:
-      - "7288:3000" # Đổi sang 7288 để tránh trùng với app cũ cổng 3000 của Thụy
+      - "7288:3000"
     environment:
-      # Biến này cực kỳ quan trọng để trình duyệt gọi đúng IP VPS
-      - NUXT_PUBLIC_API_BASE=http://${VPS_IP}:7287
-      - NUXT_PUBLIC_HUB_URL=http://${VPS_IP}:7287/hubs/monitor
+      - NUXT_PUBLIC_API_BASE=https://apis.tdmk.vn
+      - NUXT_PUBLIC_HUB_URL=https://apis.tdmk.vn/hubs/monitor
     restart: always
     networks:
       - tdmk-network

@@ -12,10 +12,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || "https://localhost:7287",
-      hubUrl:
-        process.env.NUXT_PUBLIC_HUB_URL ||
-        "https://localhost:7287/hubs/monitor",
+      apiBase: "",
+      hubUrl: "",
     },
   },
   compatibilityDate: "2025-01-15",
