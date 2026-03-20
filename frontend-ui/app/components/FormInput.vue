@@ -1,9 +1,11 @@
 <script setup lang="ts">
+// 1. Khai báo các tiện ích của Nuxt
 const config = useRuntimeConfig();
 const toast = useToast();
 const isUploading = ref(false);
+const selectedFile = ref<File | null>(null);
 
-// 1. Danh sách 9 lựa chọn cố định
+// 2. Danh sách 9 lựa chọn mã máy
 const deviceOptions = [
   { label: "TDMK_01", value: "TDMK_01" },
   { label: "TDMK_02", value: "TDMK_02" },
@@ -16,14 +18,15 @@ const deviceOptions = [
   { label: "SUNTORY_03", value: "SUNTORY_03" },
 ];
 
-// 2. Cấu hình Fields
+// 3. Cấu hình các trường (Fields)
+// Lưu ý: Trường 'file' sẽ được render thủ công qua Slot ở phần Template
 const fields = [
   {
     name: "deviceId",
-    type: "select", // Chuyển từ text sang select
+    type: "select",
     label: "Mã thiết bị",
     placeholder: "Chọn mã máy...",
-    items: deviceOptions, // Đổ 9 lựa chọn vào đây
+    items: deviceOptions,
     required: true,
     icon: "i-lucide-monitor-speaker",
   },
@@ -37,24 +40,31 @@ const fields = [
   },
   {
     name: "file",
-    type: "file",
     label: "Hình ảnh hiện trường",
-    required: true,
-    inputProps: {
-      accept: "image/*",
-      capture: "environment",
-    },
-  },
+    required: true
+  }
 ];
 
-// 3. Hàm xử lý gửi dữ liệu (Giữ nguyên logic FormData)
+// 4. Hàm hứng file khi người dùng chọn hoặc chụp ảnh
+const onFileChange = (e: any) => {
+  const files = e.target.files;
+  if (files && files[0]) {
+    selectedFile.value = files[0];
+  }
+};
+
+// 5. Hàm gửi dữ liệu lên API
 const onSubmit = async (event: any) => {
-  // Nuxt UI v3 truyền event, dữ liệu nằm trong event.data
   const formDataRaw = event.data;
 
-  // 1. Kiểm tra giá trị Sensor
+  // Kiểm tra tính hợp lệ cơ bản
   if (formDataRaw.value === undefined || formDataRaw.value === null) {
-    toast.add({ title: 'Thiếu giá trị', color: 'error' });
+    toast.add({ title: 'Vui lòng nhập giá trị Sensor', color: 'error' });
+    return;
+  }
+
+  if (!selectedFile.value) {
+    toast.add({ title: 'Vui lòng chụp hoặc chọn ảnh hiện trường', color: 'error' });
     return;
   }
 
@@ -63,34 +73,37 @@ const onSubmit = async (event: any) => {
   try {
     const formData = new FormData();
 
-    // 2. LẤY GIÁ TRỊ TỪ SELECT (Sửa lỗi DeviceId là Object)
-    // Nếu deviceId là Object { label: '...', value: 'TDMK_01' }
+    // Xử lý lấy DeviceId (hỗ trợ cả dạng Object của Select và String)
     const deviceIdValue = typeof formDataRaw.deviceId === 'object'
       ? formDataRaw.deviceId.value
       : formDataRaw.deviceId;
 
+    // KHỚP CHÍNH XÁC KEY API: DeviceId, Value, Image
     formData.append('DeviceId', deviceIdValue || 'TDMK_01');
     formData.append('Value', String(formDataRaw.value));
+    formData.append('Image', selectedFile.value);
 
-    // 3. Xử lý File
-    if (formDataRaw.file) {
-      const file = formDataRaw.file instanceof FileList ? formDataRaw.file[0] : formDataRaw.file;
-      if (file) {
-        formData.append('Image', file);
-      }
-    }
-
-    // 4. Gửi API
-    await $fetch(`${config.public.apiBase}/api/Telemetry`, {
+    // Gửi request bằng $fetch
+    await $fetch('/api/Telemetry', {
       method: 'POST',
-      body: formData
+      baseURL: config.public.apiBase,
+      body: formData,
+      // Không set Content-Type để trình duyệt tự tạo Multipart Boundary
     });
 
-    toast.add({ title: 'Gửi thành công!', color: 'neutral', icon: 'i-lucide-check' });
+    toast.add({
+      title: 'Gửi báo cáo thành công!',
+      color: 'success',
+      icon: 'i-lucide-check-circle'
+    });
 
-  } catch (error) {
+    // Reset file sau khi gửi thành công
+    selectedFile.value = null;
+
+  } catch (error: any) {
     console.error("Lỗi gửi Form:", error);
-    toast.add({ title: 'Gửi thất bại', color: 'error' });
+    const serverError = error.response?._data?.title || 'Gửi thất bại, vui lòng thử lại';
+    toast.add({ title: serverError, color: 'error' });
   } finally {
     isUploading.value = false;
   }
@@ -101,15 +114,38 @@ const onSubmit = async (event: any) => {
   <UContainer class="py-10 flex justify-center">
     <UAuthForm
       title="Nhập liệu thiết bị"
-      description="Vui lòng chọn mã máy và nhập thông số"
+      description="Chọn mã máy, nhập thông số và chụp ảnh"
       :fields="fields"
       :loading="isUploading"
       :submit-button="{
-        label: 'Gửi báo cáo',
-        color: 'neutral',
-        class: 'w-full py-3 shadow-none font-bold',
+        label: 'Gửi báo cáo ngay',
+        color: 'primary',
+        class: 'w-full py-3 shadow-md font-bold',
       }"
       @submit="onSubmit"
-    />
+    >
+      <template #file-field="{ field }">
+        <UFormGroup :label="field.label" :name="field.name" required class="mt-4">
+          <div class="flex flex-col gap-2">
+            <UInput
+              type="file"
+              icon="i-lucide-camera"
+              accept="image/*"
+              capture="environment"
+              @change="onFileChange"
+            />
+            <p v-if="selectedFile" class="text-xs text-green-500 italic">
+              Đã chọn: {{ selectedFile.name }}
+            </p>
+          </div>
+        </UFormGroup>
+      </template>
+    </UAuthForm>
   </UContainer>
+
+  <UNotifications />
 </template>
+
+<style scoped>
+/* Thêm CSS nếu cần tùy chỉnh giao diện */
+</style>

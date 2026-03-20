@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\TDMK\\Desktop\\New folder (2)\\backend_api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|c:\\users\\tdmk\\desktop\\new folder (2)\\backend_api\\tdmk_api_demo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|solutionrelative:tdmk_api_demo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|c:\\users\\tdmk\\desktop\\new folder (2)\\backend_api\\tdmk_api_demo\\controllers\\telemetrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|solutionrelative:tdmk_api_demo\\controllers\\telemetrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|c:\\users\\tdmk\\desktop\\new folder (2)\\backend_api\\tdmk_api_demo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|solutionrelative:tdmk_api_demo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6EAB6366-B30C-3BC6-2027-204C41105B70}|TDMK_API_DEMO\\TDMK_API_DEMO.csproj|c:\\users\\tdmk\\desktop\\new folder (2)\\backend_api\\tdmk_api_demo\\hubs\\monitorhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,20 +30,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\TDMK\\Desktop\\New folder (2)\\backend_api\\TDMK_API_DEMO\\appsettings.json",
               "RelativeDocumentMoniker": "TDMK_API_DEMO\\appsettings.json",
-              "ToolTip": "C:\\Users\\TDMK\\Desktop\\New folder (2)\\backend_api\\TDMK_API_DEMO\\appsettings.json*",
-              "RelativeToolTip": "TDMK_API_DEMO\\appsettings.json*",
+              "ToolTip": "C:\\Users\\TDMK\\Desktop\\New folder (2)\\backend_api\\TDMK_API_DEMO\\appsettings.json",
+              "RelativeToolTip": "TDMK_API_DEMO\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-20T03:53:11.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-20T03:53:11.525Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "TDMK_API_DEMO\\Hubs\\MonitorHub.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T08:40:26.975Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-18T08:40:26.975Z"
             },
             {
               "$type": "Document",
@@ -68,8 +66,7 @@
               "RelativeToolTip": "TDMK_API_DEMO\\Program.cs",
               "ViewState": "AgIAAE4AAAAAAAAAAAAAAF4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T04:48:46.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-18T04:48:46.901Z"
             },
             {
               "$type": "Document",
@@ -85,13 +82,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TelemetryController.cs",
               "DocumentMoniker": "C:\\Users\\TDMK\\Desktop\\New folder (2)\\backend_api\\TDMK_API_DEMO\\Controllers\\TelemetryController.cs",
               "RelativeDocumentMoniker": "TDMK_API_DEMO\\Controllers\\TelemetryController.cs",
               "ToolTip": "C:\\Users\\TDMK\\Desktop\\New folder (2)\\backend_api\\TDMK_API_DEMO\\Controllers\\TelemetryController.cs",
               "RelativeToolTip": "TDMK_API_DEMO\\Controllers\\TelemetryController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAIAwwDkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAvwIgAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T03:23:14.069Z",
               "EditorCaption": ""
