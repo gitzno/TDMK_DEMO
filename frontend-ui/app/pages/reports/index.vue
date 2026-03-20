@@ -11,7 +11,7 @@ type Telemetry = {
 };
 
 const config = useRuntimeConfig();
-
+const toast = useToast();
 const page = ref(1);
 const pageSize = ref(10);
 
