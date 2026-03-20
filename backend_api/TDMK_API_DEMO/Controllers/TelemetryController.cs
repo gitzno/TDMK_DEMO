@@ -137,7 +137,7 @@ namespace TDMK_API_DEMO.Controllers
                     record.Id,
                     record.Value,
                     // Nếu lưu trong wwwroot/uploads:
-                    FullImageUrl = $"{baseUrl}/uploads/{record.ImageUrl}",
+                    FullImageUrl = $"{baseUrl}uploads/{record.ImageUrl}",
                     CreatedAt = record.CreatedAt.ToString("dd/MM/yyyy HH:mm:ss")
                 };
 

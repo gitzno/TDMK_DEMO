@@ -94,9 +94,12 @@ var uploadFolder = app.Configuration.GetValue<string>("FileStorage:UploadFolder"
 
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(uploadFolder),
-    RequestPath = "/external-images"
+    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
+        Path.GetFullPath(uploadFolder)),
+    RequestPath = "/uploads"
 });
+
+app.UseStaticFiles();
 
 app.UseAuthorization();
 
